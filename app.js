@@ -57,6 +57,7 @@ db.none('INSERT INTO todo(thing_to_do)'+
 	 	return next(err);  
 	 }); 
 });
+
 /* "/users/:id"
  * GET: find user by id
  * PUT: update user by id
@@ -77,26 +78,6 @@ function getThings(req, res) {
       return next(err);
     });
 };
-
- //dummy variable (within the body of route, be able to
- //pull out the value placed in there)
-app.get("/things/:id", function(req, res) {
-	var userID = parseInt(req.params.id);
- 		getThings(req,res);
- 	//db.one expects a single row
- 	db.one('SELECT * FROM thing_to_do', userID)
- 	.then(function (data) {
- 		res.render('show', {userID:data.thing_to_do} );
- 	})
-	.catch(function (err) {
- 		return next(err);
- 	});
-});
-
-app.put("/things/:id", function(req, res) {
-
-});
-
 
 
 app.listen(3000, function(){
