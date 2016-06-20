@@ -1,0 +1,30 @@
+<!DOCTYPE html> 
+<html> 
+	<head>     
+		<meta charset="utf-8">     
+		<title>Things to Do</title> 
+		<script src="js/handlebars-1.0.0.beta.6.js"></script>
+		<script id="result-template" type="text/x-handlebars-template"> </script>
+		<link rel="stylesheet" href="style.css" type="text/css" />
+	</head> 
+	
+	<body>
+		<div id = "main">
+			<h1>List of things to do</h1>	
+			<div id = "inputting">
+				<form action="/things" method="POST">
+					<input type="text" placeholder="Thing to Do" name="thing_to_do" autocomplete = "off">
+					<input type="submit">
+				</form>
+			</div>
+			<div id = "list">
+				{{#each data}}
+				<li>{{this.thing_to_do}}</li>
+				{{/each}}
+			</div>
+
+		</div>
+
+		{{body}}
+	</body> 
+</html>
